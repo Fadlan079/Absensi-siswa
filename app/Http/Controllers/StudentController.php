@@ -38,7 +38,8 @@ class StudentController extends Controller
      */
     public function show(student $student)
     {
-        //
+        $siswa = Student::select('kelas', 'jurusan', 'nama', 'nisn','id')->get()->groupBy(['kelas', 'jurusan']);
+        return view('admin.student.daftar-siswa', compact('siswa'));
     }
 
     /**
@@ -46,7 +47,7 @@ class StudentController extends Controller
      */
     public function edit(student $student)
     {
-        //
+        return view('admin.student.edit', compact('student'));
     }
 
     /**
@@ -54,7 +55,22 @@ class StudentController extends Controller
      */
     public function update(Request $request, student $student)
     {
-        //
+        $request->validate([
+            'nisn' => 'required',
+            'nama' => 'required',
+            'kelas' => 'required',
+            'jurusan' => 'required',
+        ]);
+
+    $student->update([
+        'nisn' => $request->nisn,
+        'nama' => $request->nama,
+        'kelas' => $request->kelas,
+        'jurusan' => $request->jurusan,
+    ]);
+
+    return redirect()->route('teacher.daftar-siswa')
+        ->with('success', 'Data siswa berhasil diperbarui');
     }
 
     /**
@@ -62,6 +78,9 @@ class StudentController extends Controller
      */
     public function destroy(student $student)
     {
-        //
+        $student->delete();
+
+        return redirect()->route('teacher.daftar-siswa')
+            ->with('success', 'Data siswa berhasil dihapus');
     }
 }

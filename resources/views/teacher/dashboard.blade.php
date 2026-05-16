@@ -62,7 +62,7 @@
     <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-3 border-l-[5px] border-secondary rounded-lg bg-secondary/10 py-3 px-4">
         <h2 class="font-bold text-text text-lg whitespace-nowrap">Pilih Kelas</h2>
 
-        <form action="" class="flex items-center gap-2 w-full md:w-auto">
+        {{-- <form action="" class="flex items-center gap-2 w-full md:w-auto">
             <input type="search"
                 class="w-full md:w-72 p-2.5 rounded border border-gray-300 bg-white text-sm text-text focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                 placeholder="Masukkan nama kelas...">
@@ -70,7 +70,7 @@
                     class="bg-primary hover:bg-primary-light text-white px-4 py-2.5 rounded transition shadow-sm shrink-0 flex items-center justify-center">
                 <i class="fa-solid fa-search text-sm"></i>
             </button>
-        </form>
+        </form> --}}
     </div>
 </section>
 

@@ -31,9 +31,14 @@
             </div>
 
             <nav class="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
-                <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 bg-white/10 text-secondary rounded-lg font-bold transition border-l-4 border-secondary">
+                <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4 {{ request()->is('teacher/dashboard') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
                     <i class="fa-solid fa-house w-5 text-center text-lg"></i>
                     <span class="text-sm">Home</span>
+                </a>
+
+                <a href="/teacher/daftar-siswa" class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4 {{ request()->is('teacher/daftar-siswa') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                    <i class="fa-solid fa-user w-5 text-center text-lg"></i>
+                    <span class="text-sm">Daftar Siswa</span>
                 </a>
             </nav>
 

@@ -30,6 +30,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/teacher/dashboard', [StudentController::class, 'index'])
         ->middleware('role:guru')->name('teacher.dashboard');
 
+    Route::get('/teacher/daftar-siswa', [StudentController::class, 'show'])
+    ->middleware('role:guru')->name('teacher.daftar-siswa');
+
+    Route::resource('students', StudentController::class);
+
     Route::get('/attendance/{kelas}/{jurusan}', [AttendanceController::class, 'create'])
     ->middleware(['role:guru'])
     ->name('attendance.create');

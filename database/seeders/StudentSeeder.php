@@ -46,6 +46,8 @@ class StudentSeeder extends Seeder
             ["nisn" => "24.2070.2561", "nama" => "SYABIL ATARIAWAN", "kelas" => "XI", "jurusan" => "DKV"],
             ["nisn" => "24.2070.2562", "nama" => "TIARA DWI NUR AZIZAH", "kelas" => "XI", "jurusan" => "DKV"],
             ["nisn" => "24.2070.2564", "nama" => "WINKY TIO PRATAMA", "kelas" => "XI", "jurusan" => "DKV"],
+            ["nisn" => "24.2070.2565", "nama" => "ZAHWA PUSPITASARI PRAMANA ATMAJA", "kelas" => "XI", "jurusan" => "DKV"],
+            ["nisn" => "24.2070.2566", "nama" => "ZASKIA RAHMA ADIYA", "kelas" => "XI", "jurusan" => "MPLB"],
         ];
 
         foreach ($students as $student) {

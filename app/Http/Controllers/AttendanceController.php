@@ -23,7 +23,15 @@ class AttendanceController extends Controller
     public function create($kelas, $jurusan)
     {
         $students = Student::where('kelas', $kelas)->where('jurusan', $jurusan)->get();
-        return view('teacher.attendance.create', compact('students', 'kelas', 'jurusan'));
+
+        $today = now()->toDateString();
+
+        $attendances = Attendance::whereDate('tanggal', $today)
+            ->whereIn('student_id', $students->pluck('id'))
+            ->get()
+            ->keyBy('student_id');
+
+        return view('teacher.attendance.create', compact('students', 'kelas', 'jurusan', 'attendances'));
     }
 
     /**
@@ -33,38 +41,29 @@ class AttendanceController extends Controller
     {
         $request->validate([
             'attendance' => 'required|array',
+            'kelas' => 'required',
+            'jurusan' => 'required',
         ]);
 
-        $today = Carbon::today()->toDateString();
-
-        $alreadyExists = Attendance::whereDate('tanggal', $today)
-            ->whereHas('student', function ($q) use ($request) {
-                $q->where('kelas', $request->kelas)
-                ->where('jurusan', $request->jurusan);
-            })
-            ->exists();
-
-        if ($alreadyExists) {
-            return redirect()->route('teacher.dashboard')->with('error', 'Absensi hari ini sudah dilakukan untuk kelas ini.');
-        }
-
-        $data = [];
+        $today = now()->toDateString();
 
         foreach ($request->attendance as $studentId => $status) {
-            $data[] = [
-                'student_id' => $studentId,
-                'tipe' => 'harian',
-                'mapel' => null,
-                'keterangan' => $status,
-                'tanggal' => now()->toDateString(),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ];
+
+            Attendance::updateOrCreate(
+                [
+                    'student_id' => $studentId,
+                    'tanggal' => $today,
+                ],
+                [
+                    'tipe' => 'harian',
+                    'mapel' => null,
+                    'keterangan' => $status,
+                ]
+            );
         }
 
-        Attendance::insert($data);
-
-        return redirect()->route('teacher.dashboard')->with('success', 'Absensi berhasil disimpan');
+        return redirect()->route('teacher.dashboard')
+            ->with('success', 'Absensi berhasil disimpan / diperbarui');
     }
 
     /**

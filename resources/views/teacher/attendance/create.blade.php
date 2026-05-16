@@ -53,7 +53,11 @@
 
                         <td class="px-4 py-4 text-center">
                             <label class="inline-flex items-center justify-center cursor-pointer group/radio">
-                                <input type="radio" name="attendance[{{ $s->id }}]" value="Hadir" class="hidden peer" checked>
+                                <input type="radio"
+                                    name="attendance[{{ $s->id }}]"
+                                    value="Hadir"
+                                    class="hidden peer"
+                                    {{ isset($attendances[$s->id]) && $attendances[$s->id]->keterangan == 'Hadir' ? 'checked' : '' }}>
                                 <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:border-success peer-checked:bg-success transition-all">
                                     <i class="fa-solid fa-check text-[10px] text-white opacity-0 peer-checked:opacity-100"></i>
                                 </div>
@@ -62,7 +66,11 @@
 
                         <td class="px-4 py-4 text-center">
                             <label class="inline-flex items-center justify-center cursor-pointer">
-                                <input type="radio" name="attendance[{{ $s->id }}]" value="Sakit" class="hidden peer">
+                                <input type="radio"
+                                    name="attendance[{{ $s->id }}]"
+                                    value="Sakit"
+                                    class="hidden peer"
+                                    {{ isset($attendances[$s->id]) && $attendances[$s->id]->keterangan == 'Sakit' ? 'checked' : '' }}>
                                 <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:border-primary peer-checked:bg-primary transition-all">
                                     <div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
                                 </div>
@@ -71,7 +79,11 @@
 
                         <td class="px-4 py-4 text-center">
                             <label class="inline-flex items-center justify-center cursor-pointer">
-                                <input type="radio" name="attendance[{{ $s->id }}]" value="Izin" class="hidden peer">
+                                <input type="radio"
+                                    name="attendance[{{ $s->id }}]"
+                                    value="Izin"
+                                    class="hidden peer"
+                                    {{ isset($attendances[$s->id]) && $attendances[$s->id]->keterangan == 'Izin' ? 'checked' : '' }}>
                                 <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:border-warning peer-checked:bg-warning transition-all">
                                     <div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
                                 </div>
@@ -80,7 +92,11 @@
 
                         <td class="px-4 py-4 text-center">
                             <label class="inline-flex items-center justify-center cursor-pointer">
-                                <input type="radio" name="attendance[{{ $s->id }}]" value="Alpha" class="hidden peer">
+                                <input type="radio"
+                                    name="attendance[{{ $s->id }}]"
+                                    value="Alpha"
+                                    class="hidden peer"
+                                    {{ isset($attendances[$s->id]) && $attendances[$s->id]->keterangan == 'Alpha' ? 'checked' : '' }}>
                                 <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:border-danger peer-checked:bg-danger transition-all">
                                     <i class="fa-solid fa-xmark text-[10px] text-white opacity-0 peer-checked:opacity-100"></i>
                                 </div>
