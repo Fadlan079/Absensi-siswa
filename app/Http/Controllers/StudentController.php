@@ -14,7 +14,7 @@ class StudentController extends Controller
     public function index()
     {
         $class = Student::select('kelas','jurusan', DB::raw('count(*) as total'))->groupBy('kelas','jurusan')->get();
-        return view('teacher.dashboard', compact('class'));
+        return inertia('Teacher/Dashboard', ['class' => $class]);
     }
 
     /**
@@ -39,7 +39,7 @@ class StudentController extends Controller
     public function show(student $student)
     {
         $siswa = Student::select('kelas', 'jurusan', 'nama', 'nisn','id')->get()->groupBy(['kelas', 'jurusan']);
-        return view('admin.student.daftar-siswa', compact('siswa'));
+        return inertia('Admin/Student/DaftarSiswa', ['siswa' => $siswa]);
     }
 
     /**
@@ -47,7 +47,7 @@ class StudentController extends Controller
      */
     public function edit(student $student)
     {
-        return view('admin.student.edit', compact('student'));
+        return inertia('Admin/Student/Edit', ['student' => $student]);
     }
 
     /**

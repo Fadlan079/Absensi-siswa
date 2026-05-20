@@ -31,7 +31,7 @@ class AttendanceController extends Controller
             ->get()
             ->keyBy('student_id');
 
-        return view('teacher.attendance.create', compact('students', 'kelas', 'jurusan', 'attendances'));
+        return inertia('Teacher/Attendance/Create', compact('students', 'kelas', 'jurusan', 'attendances'));
     }
 
     /**
