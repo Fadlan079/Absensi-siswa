@@ -462,17 +462,17 @@ export default function PublicDashboard({ leaderboard, kehadiranHariIni, keterla
                                             <p className="text-sm text-muted mt-1">Daftar lengkap urutan persentase kehadiran 3 bulan terakhir.</p>
                                         </div>
 
-                                        <div className="overflow-x-auto rounded-xl border border-gray-100 shadow-sm">
-                                            <table className="w-full text-left border-collapse">
+                                        <div className="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm bg-white p-6">
+                                            <table className="w-full text-left border-collapse min-w-[500px]">
                                                 <thead>
-                                                    <tr className="bg-gray-50 text-gray-600 font-semibold text-sm">
-                                                        <th className="p-4 border-b">Peringkat</th>
-                                                        <th className="p-4 border-b">Kelas</th>
-                                                        <th className="p-4 border-b">Jurusan</th>
-                                                        <th className="p-4 border-b text-right">Persentase Kehadiran</th>
+                                                    <tr className="bg-slate-50/70 border-b border-gray-100 text-gray-500 font-extrabold text-xs uppercase tracking-wider">
+                                                        <th className="px-6 py-4 border-b border-gray-100">Peringkat</th>
+                                                        <th className="px-6 py-4 border-b border-gray-100">Kelas</th>
+                                                        <th className="px-6 py-4 border-b border-gray-100">Jurusan</th>
+                                                        <th className="px-6 py-4 border-b border-gray-100 text-right">Persentase Kehadiran</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody className="divide-y divide-gray-100 text-sm">
+                                                <tbody className="divide-y divide-gray-50 text-sm">
                                                     {leaderboard.map((kelas, index) => {
                                                         const isSelected = selectedLeaderboardIndex === index;
                                                         return (
@@ -482,11 +482,11 @@ export default function PublicDashboard({ leaderboard, kehadiranHariIni, keterla
                                                                     setSelectedLeaderboardIndex(index);
                                                                     certRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                                                 }}
-                                                                className={`cursor-pointer hover:bg-slate-50 transition-colors ${
+                                                                className={`cursor-pointer hover:bg-slate-50/50 transition-colors last:border-0 ${
                                                                     isSelected ? 'bg-primary/5 font-semibold border-l-4 border-l-primary' : ''
                                                                 } ${index === 0 && !isSelected ? 'bg-amber-50/10' : ''}`}
                                                             >
-                                                                <td className="p-4 flex items-center gap-2">
+                                                                <td className="px-6 py-4.5 flex items-center gap-2">
                                                                     {index === 0 ? (
                                                                         <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-black"><i className="fa-solid fa-medal"></i></span>
                                                                     ) : index === 1 ? (
@@ -497,9 +497,9 @@ export default function PublicDashboard({ leaderboard, kehadiranHariIni, keterla
                                                                         <span className="text-gray-500 font-semibold pl-2">#{index + 1}</span>
                                                                     )}
                                                                 </td>
-                                                                <td className="p-4 font-bold text-text">{kelas.nama_kelas}</td>
-                                                                <td className="p-4 text-muted">{kelas.jurusan}</td>
-                                                                <td className="p-4 text-right">
+                                                                <td className="px-6 py-4.5 font-bold text-text">{kelas.nama_kelas}</td>
+                                                                <td className="px-6 py-4.5 text-muted font-semibold text-xs">{kelas.jurusan}</td>
+                                                                <td className="px-6 py-4.5 text-right">
                                                                     <span className={`font-bold ${index === 0 ? 'text-amber-600 text-base' : 'text-primary'}`}>
                                                                         {kelas.persentase}%
                                                                     </span>
@@ -529,31 +529,31 @@ export default function PublicDashboard({ leaderboard, kehadiranHariIni, keterla
                                 <p className="text-muted mt-2">Daftar agregat kehadiran seluruh kelas pada hari ini.</p>
                             </div>
 
-                            <div className="overflow-x-auto rounded-xl border border-gray-100 shadow-sm">
+                             <div className="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm bg-white p-6">
                                 <table className="w-full text-left border-collapse min-w-[600px]">
                                     <thead>
-                                        <tr className="bg-gray-50 text-gray-600 font-semibold text-sm">
-                                            <th className="p-4 border-b">Kelas</th>
-                                            <th className="p-4 border-b">Jurusan</th>
-                                            <th className="p-4 border-b text-center text-green-600">Hadir</th>
-                                            <th className="p-4 border-b text-center text-blue-600">Sakit</th>
-                                            <th className="p-4 border-b text-center text-amber-600">Izin</th>
-                                            <th className="p-4 border-b text-center text-red-600">Alpha</th>
+                                        <tr className="bg-slate-50/70 border-b border-gray-100 text-gray-500 font-extrabold text-xs uppercase tracking-wider">
+                                            <th className="px-6 py-4 border-b border-gray-100">Kelas</th>
+                                            <th className="px-6 py-4 border-b border-gray-100">Jurusan</th>
+                                            <th className="px-6 py-4 border-b border-gray-100 text-center text-success">Hadir</th>
+                                            <th className="px-6 py-4 border-b border-gray-100 text-center text-blue-600">Sakit</th>
+                                            <th className="px-6 py-4 border-b border-gray-100 text-center text-warning">Izin</th>
+                                            <th className="px-6 py-4 border-b border-gray-100 text-center text-danger">Alpha</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-100 text-sm">
+                                    <tbody className="divide-y divide-gray-50 text-sm">
                                         {kehadiranHariIni.length > 0 ? kehadiranHariIni.map((kelas) => (
-                                            <tr key={kelas.id} className="hover:bg-gray-50 transition-colors">
-                                                <td className="p-4 font-bold text-text">{kelas.nama_kelas}</td>
-                                                <td className="p-4 text-muted">{kelas.jurusan}</td>
-                                                <td className="p-4 text-center font-semibold text-green-700 bg-green-50/50">{kelas.hadir || 0}</td>
-                                                <td className="p-4 text-center font-semibold text-blue-700 bg-blue-50/50">{kelas.sakit || 0}</td>
-                                                <td className="p-4 text-center font-semibold text-amber-700 bg-amber-50/50">{kelas.izin || 0}</td>
-                                                <td className="p-4 text-center font-semibold text-red-700 bg-red-50/50">{kelas.alpha || 0}</td>
+                                            <tr key={kelas.id} className="hover:bg-slate-50/50 transition-colors last:border-0">
+                                                <td className="px-6 py-4.5 font-bold text-text">{kelas.nama_kelas}</td>
+                                                <td className="px-6 py-4.5 text-muted font-semibold text-xs">{kelas.jurusan}</td>
+                                                <td className="px-6 py-4.5 text-center font-extrabold text-success text-base bg-green-50/20">{kelas.hadir || 0}</td>
+                                                <td className="px-6 py-4.5 text-center font-extrabold text-blue-700 text-base bg-blue-50/20">{kelas.sakit || 0}</td>
+                                                <td className="px-6 py-4.5 text-center font-extrabold text-warning text-base bg-yellow-50/20">{kelas.izin || 0}</td>
+                                                <td className="px-6 py-4.5 text-center font-extrabold text-danger text-base bg-red-50/20">{kelas.alpha || 0}</td>
                                             </tr>
                                         )) : (
                                             <tr>
-                                                <td colSpan="6" className="p-8 text-center text-muted">Belum ada kelas yang melakukan absensi hari ini.</td>
+                                                <td colSpan="6" className="px-6 py-12 text-center text-muted font-medium">Belum ada kelas yang melakukan absensi hari ini.</td>
                                             </tr>
                                         )}
                                     </tbody>
@@ -596,27 +596,27 @@ export default function PublicDashboard({ leaderboard, kehadiranHariIni, keterla
 
                                                 {/* Accordion Content */}
                                                 {isExpanded && (
-                                                    <div className="border-t border-gray-100 overflow-x-auto">
+                                                    <div className="border-t border-gray-100 overflow-x-auto p-6 bg-white">
                                                         <table className="w-full text-left border-collapse min-w-[600px]">
                                                             <thead>
-                                                                <tr className="bg-gray-50/50 text-gray-500 font-semibold text-xs uppercase tracking-wider">
-                                                                    <th className="p-4 border-b">Nama Siswa</th>
-                                                                    <th className="p-4 border-b">NISN</th>
-                                                                    <th className="p-4 border-b text-center text-green-600">Hadir</th>
-                                                                    <th className="p-4 border-b text-center text-blue-600">Sakit</th>
-                                                                    <th className="p-4 border-b text-center text-amber-600">Izin</th>
-                                                                    <th className="p-4 border-b text-center text-red-600">Alpha</th>
+                                                                <tr className="bg-slate-50/70 border-b border-gray-100 text-gray-500 font-extrabold text-xs uppercase tracking-wider">
+                                                                    <th className="px-6 py-4 border-b border-gray-100">Nama Siswa</th>
+                                                                    <th className="px-6 py-4 border-b border-gray-100">NISN</th>
+                                                                    <th className="px-6 py-4 border-b border-gray-100 text-center text-success">Hadir</th>
+                                                                    <th className="px-6 py-4 border-b border-gray-100 text-center text-blue-600">Sakit</th>
+                                                                    <th className="px-6 py-4 border-b border-gray-100 text-center text-warning">Izin</th>
+                                                                    <th className="px-6 py-4 border-b border-gray-100 text-center text-danger">Alpha</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody className="divide-y divide-gray-100 text-sm">
+                                                            <tbody className="divide-y divide-gray-50 text-sm">
                                                                 {daftarSiswa.map((siswa) => (
-                                                                    <tr key={siswa.id} className="hover:bg-gray-50/50 transition-colors">
-                                                                        <td className="p-4 font-bold text-text">{siswa.nama}</td>
-                                                                        <td className="p-4 text-xs font-semibold text-muted tracking-wider">{siswa.nisn || '-'}</td>
-                                                                        <td className="p-4 text-center font-bold text-green-600 bg-green-50/10">{siswa.hadir}</td>
-                                                                        <td className="p-4 text-center font-bold text-blue-600 bg-blue-50/10">{siswa.sakit}</td>
-                                                                        <td className="p-4 text-center font-bold text-amber-600 bg-amber-50/10">{siswa.izin}</td>
-                                                                        <td className="p-4 text-center font-bold text-red-600 bg-red-50/10">{siswa.alpha}</td>
+                                                                    <tr key={siswa.id} className="hover:bg-slate-50/50 transition-colors last:border-0">
+                                                                        <td className="px-6 py-4.5 font-bold text-text">{siswa.nama}</td>
+                                                                        <td className="px-6 py-4.5 text-xs font-semibold text-muted font-mono tracking-wider">{siswa.nisn || '-'}</td>
+                                                                        <td className="px-6 py-4.5 text-center font-extrabold text-success text-base bg-green-50/10">{siswa.hadir}</td>
+                                                                        <td className="px-6 py-4.5 text-center font-extrabold text-blue-600 text-base bg-blue-50/10">{siswa.sakit}</td>
+                                                                        <td className="px-6 py-4.5 text-center font-extrabold text-warning text-base bg-yellow-50/10">{siswa.izin}</td>
+                                                                        <td className="px-6 py-4.5 text-center font-extrabold text-danger text-base bg-red-50/10">{siswa.alpha}</td>
                                                                     </tr>
                                                                 ))}
                                                             </tbody>

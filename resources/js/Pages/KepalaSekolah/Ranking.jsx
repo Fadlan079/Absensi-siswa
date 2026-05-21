@@ -99,45 +99,65 @@ export default function KepalaSekolahRanking({ auth, ranking, stats_kelas, kelas
 
             {/* Tabel Ranking */}
             <section className="px-5 pb-6">
-                <div className="flex items-center gap-2 mb-2 border-l-4 border-secondary pl-3">
-                    <h3 className="font-bold text-sm text-text">Daftar Siswa (urut Alpha terbanyak)</h3>
-                </div>
-                <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden overflow-x-auto">
-                    <table className="w-full text-sm min-w-[500px]">
-                        <thead>
-                            <tr className="bg-gray-50 border-b">
-                                <th className="px-3 py-3 text-xs font-bold text-gray-500 uppercase text-center">#</th>
-                                <th className="px-3 py-3 text-xs font-bold text-gray-500 uppercase text-left">Nama</th>
-                                <th className="px-3 py-3 text-xs font-bold text-gray-500 uppercase text-left hidden sm:table-cell">Kelas</th>
-                                <th className="px-3 py-3 text-xs font-bold text-green-600 uppercase text-center">H</th>
-                                <th className="px-3 py-3 text-xs font-bold text-blue-600 uppercase text-center">S</th>
-                                <th className="px-3 py-3 text-xs font-bold text-yellow-600 uppercase text-center">I</th>
-                                <th className="px-3 py-3 text-xs font-bold text-red-500 uppercase text-center">A</th>
-                                <th className="px-3 py-3 text-xs font-bold text-gray-500 uppercase text-center">%</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {ranking.map((s, i) => (
-                                <tr key={s.id} className={`border-b hover:bg-gray-50/50 ${s.alpha >= 5 ? 'bg-red-50/30' : ''}`}>
-                                    <td className="px-3 py-2.5 text-center text-xs text-gray-400">{i + 1}</td>
-                                    <td className="px-3 py-2.5 font-semibold text-text text-sm">{s.nama}</td>
-                                    <td className="px-3 py-2.5 text-gray-500 text-xs hidden sm:table-cell">{s.kelas}</td>
-                                    <td className="px-3 py-2.5 text-center font-bold text-green-600">{s.hadir}</td>
-                                    <td className="px-3 py-2.5 text-center text-blue-600">{s.sakit}</td>
-                                    <td className="px-3 py-2.5 text-center text-yellow-600">{s.izin}</td>
-                                    <td className="px-3 py-2.5 text-center font-bold text-red-500">{s.alpha}</td>
-                                    <td className="px-3 py-2.5 text-center">
-                                        <span className={`text-xs font-bold px-1.5 py-0.5 rounded-full ${s.persen >= 85 ? 'bg-green-100 text-green-700' : s.persen >= 70 ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-600'}`}>
-                                            {s.persen}%
-                                        </span>
-                                    </td>
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 className="text-lg font-bold text-text">Daftar Kehadiran Siswa</h3>
+                            <p className="text-xs text-muted font-bold uppercase tracking-wider mt-0.5">Diurutkan berdasarkan akumulasi Alpha terbanyak</p>
+                        </div>
+                    </div>
+                    
+                    <div className="overflow-x-auto -mx-6">
+                        <table className="w-full text-sm min-w-[550px] border-collapse">
+                            <thead>
+                                <tr className="bg-slate-50/70 border-b border-gray-100">
+                                    <th className="px-6 py-4.5 text-xs font-bold text-gray-500 uppercase text-center tracking-wider w-16">#</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-gray-500 uppercase text-left tracking-wider">Nama</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-gray-500 uppercase text-left tracking-wider hidden sm:table-cell">Kelas</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-success uppercase text-center tracking-wider">H</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-blue-600 uppercase text-center tracking-wider">S</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-warning uppercase text-center tracking-wider">I</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-danger uppercase text-center tracking-wider">A</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-gray-500 uppercase text-center tracking-wider">%</th>
                                 </tr>
-                            ))}
-                            {ranking.length === 0 && (
-                                <tr><td colSpan={8} className="px-4 py-10 text-center text-gray-400">Belum ada data presensi bulan ini</td></tr>
-                            )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {ranking.map((s, i) => (
+                                    <tr key={s.id} className={`border-b border-gray-50 last:border-0 hover:bg-slate-50/50 transition-colors ${s.alpha >= 5 ? 'bg-red-50/20' : ''}`}>
+                                        <td className="px-6 py-4 text-center text-xs text-gray-400 font-bold">{i + 1}</td>
+                                        <td className="px-6 py-4 font-bold text-text">{s.nama}</td>
+                                        <td className="px-6 py-4 text-gray-500 text-xs font-semibold hidden sm:table-cell">{s.kelas}</td>
+                                        <td className="px-6 py-4 text-center font-black text-success text-base">{s.hadir}</td>
+                                        <td className="px-6 py-4 text-center font-black text-blue-600 text-base">{s.sakit}</td>
+                                        <td className="px-6 py-4 text-center font-black text-warning text-base">{s.izin}</td>
+                                        <td className="px-6 py-4 text-center font-black text-danger text-base">{s.alpha}</td>
+                                        <td className="px-6 py-4 text-center">
+                                            <span className={`text-xs font-extrabold px-2.5 py-1 rounded-full ${s.persen >= 85 ? 'bg-green-100 text-green-700' : s.persen >= 70 ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-600'}`}>
+                                                {s.persen}%
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                                {ranking.length === 0 && (
+                                    <tr>
+                                        <td colSpan={8} className="px-6 py-12 text-center text-gray-400 font-medium">
+                                            Belum ada data presensi bulan ini
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {/* Bottom Status / Badges directly from illustration */}
+                    <div className="flex flex-wrap items-center justify-between gap-4 mt-6 pt-6 border-t border-gray-100">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-success text-xs font-bold rounded-lg border border-green-100">
+                            <i className="fa-solid fa-shield-halved"></i> Data Terenkripsi & Aman
+                        </div>
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-success text-xs font-bold rounded-lg border border-green-100">
+                            <i className="fa-solid fa-leaf"></i> 100% Bebas Kertas
+                        </div>
+                    </div>
                 </div>
             </section>
         </DashboardLayout>

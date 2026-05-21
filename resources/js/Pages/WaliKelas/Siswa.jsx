@@ -42,27 +42,30 @@ export default function WaliKelasSiswa({ auth, kelas, siswa, today_presensi }) {
 
             {/* Daftar Siswa */}
             <section className="px-5 pb-6">
-                <div className="flex justify-between items-center mb-3">
-                    <h3 className="font-bold text-sm border-l-4 border-secondary pl-3">Daftar Siswa</h3>
-                </div>
-                <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                    <div className="divide-y divide-gray-50">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 className="text-lg font-bold text-text">Daftar Siswa</h3>
+                            <p className="text-xs text-muted font-bold uppercase tracking-wider mt-0.5">Siswa Terdaftar Pada Kelas {kelas.nama}</p>
+                        </div>
+                    </div>
+                    <div className="divide-y divide-gray-50 -mx-6 -mb-6">
                         {siswa.map((s, i) => (
-                            <div key={i} className="flex items-center gap-3 px-4 py-3">
-                                <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${s.jenis_kelamin === 'L' ? 'bg-blue-100 text-blue-600' : 'bg-pink-100 text-pink-600'}`}>
+                            <div key={i} className="flex items-center gap-4 px-6 py-4.5 hover:bg-slate-50/50 transition-colors first:pt-0 last:pb-6">
+                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 ${s.jenis_kelamin === 'L' ? 'bg-blue-50 text-blue-600 border border-blue-100' : 'bg-pink-50 text-pink-600 border border-pink-100'}`}>
                                     {s.nama.substring(0, 1)}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-semibold text-text truncate">{s.nama}</p>
-                                    <p className="text-xs text-gray-400">{s.nis}</p>
+                                    <p className="text-sm font-bold text-text truncate">{s.nama}</p>
+                                    <p className="text-xs text-gray-400 font-semibold font-mono mt-0.5">{s.nis}</p>
                                 </div>
-                                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${s.jenis_kelamin === 'L' ? 'bg-blue-50 text-blue-500' : 'bg-pink-50 text-pink-500'}`}>
-                                    {s.jenis_kelamin === 'L' ? '♂' : '♀'}
+                                <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${s.jenis_kelamin === 'L' ? 'bg-blue-50 text-blue-700 border border-blue-100' : 'bg-pink-50 text-pink-600 border border-pink-100'}`}>
+                                    {s.jenis_kelamin === 'L' ? '♂ Laki-laki' : '♀ Perempuan'}
                                 </span>
                             </div>
                         ))}
                         {siswa.length === 0 && (
-                            <div className="px-4 py-10 text-center text-gray-400">Belum ada siswa di kelas ini</div>
+                            <div className="px-6 py-12 text-center text-gray-400 font-medium">Belum ada siswa di kelas ini</div>
                         )}
                     </div>
                 </div>

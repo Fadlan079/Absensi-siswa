@@ -31,36 +31,45 @@ export default function WaliKelasDashboard({ auth, kelas, statistik, presensi_re
                 </section>
             )}
 
-            <section className="px-5 pb-5 mt-2">
-                <div className="flex items-center gap-2 mb-3 border-l-4 border-secondary pl-3">
-                    <h2 className="font-bold text-base">Riwayat Presensi Terbaru</h2>
-                </div>
-                <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                    <table className="w-full text-sm">
-                        <thead>
-                            <tr className="bg-gray-50 border-b">
-                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase text-left">Tanggal</th>
-                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase text-center">Hadir</th>
-                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase text-center">Alpha</th>
-                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase text-center">Total</th>
-                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase text-left hidden sm:table-cell">Oleh</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {presensi_recent.map((p, i) => (
-                                <tr key={i} className="border-b hover:bg-gray-50/50">
-                                    <td className="px-4 py-3 font-medium">{p.tanggal}</td>
-                                    <td className="px-4 py-3 text-center text-green-600 font-semibold">{p.hadir}</td>
-                                    <td className="px-4 py-3 text-center text-red-500 font-semibold">{p.alpha}</td>
-                                    <td className="px-4 py-3 text-center text-gray-500">{p.total}</td>
-                                    <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">{p.oleh}</td>
+            <section className="px-5 pb-5">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 className="text-lg font-bold text-text">Riwayat Presensi Terbaru</h3>
+                            <p className="text-xs text-muted font-bold uppercase tracking-wider mt-0.5">Daftar presensi kelas yang baru dilakukan</p>
+                        </div>
+                    </div>
+                    <div className="overflow-x-auto -mx-6">
+                        <table className="w-full text-sm min-w-[550px] border-collapse">
+                            <thead>
+                                <tr className="bg-slate-50/70 border-b border-gray-100">
+                                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-left tracking-wider">Tanggal</th>
+                                    <th className="px-6 py-4 text-xs font-bold text-success uppercase text-center tracking-wider">Hadir</th>
+                                    <th className="px-6 py-4 text-xs font-bold text-danger uppercase text-center tracking-wider">Alpha</th>
+                                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-center tracking-wider">Total</th>
+                                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-left tracking-wider hidden sm:table-cell">Oleh</th>
                                 </tr>
-                            ))}
-                            {presensi_recent.length === 0 && (
-                                <tr><td colSpan={5} className="px-4 py-10 text-center text-gray-400">Belum ada data presensi</td></tr>
-                            )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {presensi_recent.map((p, i) => (
+                                    <tr key={i} className="border-b border-gray-50 last:border-0 hover:bg-slate-50/50 transition-colors">
+                                        <td className="px-6 py-4 font-bold text-text">{p.tanggal}</td>
+                                        <td className="px-6 py-4 text-center text-green-600 font-extrabold text-base">{p.hadir}</td>
+                                        <td className="px-6 py-4 text-center text-red-500 font-extrabold text-base">{p.alpha}</td>
+                                        <td className="px-6 py-4 text-center text-gray-500 font-semibold">{p.total}</td>
+                                        <td className="px-6 py-4 text-gray-400 font-semibold text-xs hidden sm:table-cell">{p.oleh}</td>
+                                    </tr>
+                                ))}
+                                {presensi_recent.length === 0 && (
+                                    <tr>
+                                        <td colSpan={5} className="px-6 py-12 text-center text-gray-400 font-medium">
+                                            Belum ada data presensi
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </DashboardLayout>

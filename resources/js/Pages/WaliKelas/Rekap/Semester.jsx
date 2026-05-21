@@ -51,40 +51,60 @@ export default function RekapSemester({ auth, kelas, rekap, semester, tahun }) {
             </section>
 
             <section className="px-5 pb-5">
-                <div className="flex items-center gap-2 mb-3 border-l-4 border-secondary pl-3">
-                    <h2 className="font-bold text-base">Rekap Kehadiran Semester</h2>
-                </div>
-                <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden overflow-x-auto">
-                    <table className="w-full text-sm min-w-[560px]">
-                        <thead>
-                            <tr className="bg-gray-50 border-b">
-                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase text-left">Nama Siswa</th>
-                                <th className="px-4 py-3 text-xs font-bold text-green-600 uppercase text-center">Hadir</th>
-                                <th className="px-4 py-3 text-xs font-bold text-blue-600 uppercase text-center">Sakit</th>
-                                <th className="px-4 py-3 text-xs font-bold text-yellow-600 uppercase text-center">Izin</th>
-                                <th className="px-4 py-3 text-xs font-bold text-red-500 uppercase text-center">Alpha</th>
-                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase text-center">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rekap.map((s, i) => (
-                                <tr key={i} className={`border-b hover:bg-gray-50/50 ${s.alpha >= 10 ? 'bg-red-50/40' : ''}`}>
-                                    <td className="px-4 py-3 font-semibold text-text">
-                                        {s.nama}
-                                        <span className="text-xs text-gray-400 ml-1">({s.nis})</span>
-                                    </td>
-                                    <td className="px-4 py-3 text-center font-bold text-green-600">{s.hadir}</td>
-                                    <td className="px-4 py-3 text-center text-blue-600">{s.sakit}</td>
-                                    <td className="px-4 py-3 text-center text-yellow-600">{s.izin}</td>
-                                    <td className="px-4 py-3 text-center font-bold text-red-500">{s.alpha}</td>
-                                    <td className="px-4 py-3 text-center text-gray-500">{s.total}</td>
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 className="text-xl font-bold text-text">Laporan Kehadiran Semester</h3>
+                            <p className="text-xs text-muted font-extrabold uppercase tracking-wider mt-0.5">Kelas {kelas.nama} - Semester {semester} ({semester === 1 ? 'Juli – Desember' : 'Januari – Juni'} {tahun})</p>
+                        </div>
+                    </div>
+
+                    <div className="overflow-x-auto -mx-6">
+                        <table className="w-full text-sm min-w-[650px] border-collapse">
+                            <thead>
+                                <tr className="bg-slate-50/70 border-b border-gray-100">
+                                    <th className="px-6 py-4.5 text-xs font-extrabold text-gray-500 uppercase text-left tracking-wider sticky left-0 bg-slate-50 z-10">Nama Siswa</th>
+                                    <th className="px-6 py-4.5 text-xs font-extrabold text-success uppercase text-center tracking-wider">H</th>
+                                    <th className="px-6 py-4.5 text-xs font-extrabold text-blue-600 uppercase text-center tracking-wider">S</th>
+                                    <th className="px-6 py-4.5 text-xs font-extrabold text-warning uppercase text-center tracking-wider">I</th>
+                                    <th className="px-6 py-4.5 text-xs font-extrabold text-danger uppercase text-center tracking-wider">A</th>
+                                    <th className="px-6 py-4.5 text-xs font-extrabold text-gray-500 uppercase text-center tracking-wider">Total Hari</th>
                                 </tr>
-                            ))}
-                            {rekap.length === 0 && (
-                                <tr><td colSpan={6} className="px-4 py-10 text-center text-gray-400">Belum ada data presensi semester ini</td></tr>
-                            )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {rekap.map((s, i) => (
+                                    <tr key={i} className={`border-b border-gray-50 last:border-0 hover:bg-slate-50/50 transition-colors ${s.alpha >= 10 ? 'bg-red-50/20' : ''}`}>
+                                        <td className="px-6 py-4 font-bold text-text sticky left-0 bg-white z-10">
+                                            {s.nama}
+                                            <span className="text-[10px] font-mono text-gray-400 block sm:inline sm:ml-2">({s.nis})</span>
+                                        </td>
+                                        <td className="px-6 py-4 text-center font-black text-success text-base">{s.hadir}</td>
+                                        <td className="px-6 py-4 text-center font-black text-blue-600 text-base">{s.sakit}</td>
+                                        <td className="px-6 py-4 text-center font-black text-warning text-base">{s.izin}</td>
+                                        <td className="px-6 py-4 text-center font-black text-danger text-base">{s.alpha}</td>
+                                        <td className="px-6 py-4 text-center font-black text-gray-500 text-base">{s.total}</td>
+                                    </tr>
+                                ))}
+                                {rekap.length === 0 && (
+                                    <tr>
+                                        <td colSpan={6} className="px-6 py-12 text-center text-gray-400 font-medium">
+                                            Belum ada data presensi semester ini
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {/* Bottom Status / Badges directly from illustration */}
+                    <div className="flex flex-wrap items-center justify-between gap-4 mt-6 pt-6 border-t border-gray-100">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-success text-xs font-bold rounded-lg border border-green-100">
+                            <i className="fa-solid fa-shield-halved"></i> Data Terenkripsi & Aman
+                        </div>
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-success text-xs font-bold rounded-lg border border-green-100">
+                            <i className="fa-solid fa-leaf"></i> 100% Bebas Kertas
+                        </div>
+                    </div>
                 </div>
             </section>
         </DashboardLayout>

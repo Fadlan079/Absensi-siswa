@@ -115,35 +115,40 @@ export default function AdminDashboard({ auth, stats, daftar_belum_absen, user_t
 
             {/* User Terbaru */}
             <section className="px-5 pb-5">
-                <div className="flex items-center gap-2 mb-3 border-l-4 border-secondary pl-3">
-                    <h2 className="font-bold text-text text-base">Pengguna Terbaru</h2>
-                </div>
-                <div className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm">
-                    <table className="w-full text-sm">
-                        <thead>
-                            <tr className="bg-gray-50 border-b border-gray-100">
-                                <th className="text-left px-4 py-3 text-xs font-bold text-gray-500 uppercase">Nama</th>
-                                <th className="text-left px-4 py-3 text-xs font-bold text-gray-500 uppercase hidden sm:table-cell">Email</th>
-                                <th className="text-left px-4 py-3 text-xs font-bold text-gray-500 uppercase">Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {user_terbaru.map((u) => (
-                                <tr key={u.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition">
-                                    <td className="px-4 py-3 font-medium text-text">{u.name}</td>
-                                    <td className="px-4 py-3 text-gray-500 hidden sm:table-cell">{u.email}</td>
-                                    <td className="px-4 py-3">
-                                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${roleBadgeColor[u.role] || 'bg-gray-200 text-gray-700'}`}>
-                                            {roleLabel[u.role] || u.role}
-                                        </span>
-                                    </td>
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 className="text-lg font-bold text-text">Pengguna Terbaru</h3>
+                            <p className="text-xs text-muted font-bold uppercase tracking-wider mt-0.5">Daftar pengguna yang baru didaftarkan</p>
+                        </div>
+                    </div>
+                    <div className="overflow-x-auto -mx-6">
+                        <table className="w-full text-sm min-w-[500px] border-collapse">
+                            <thead>
+                                <tr className="bg-slate-50/70 border-b border-gray-100">
+                                    <th className="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Nama</th>
+                                    <th className="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Email</th>
+                                    <th className="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Role</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div className="p-3 border-t border-gray-50 text-center">
-                        <Link href={route('admin.users.index')} className="text-primary text-xs font-semibold hover:underline">
-                            Lihat Semua Pengguna →
+                            </thead>
+                            <tbody>
+                                {user_terbaru.map((u) => (
+                                    <tr key={u.id} className="border-b border-gray-50 last:border-0 hover:bg-slate-50/50 transition-colors">
+                                        <td className="px-6 py-4 font-bold text-text">{u.name}</td>
+                                        <td className="px-6 py-4 text-gray-500 hidden sm:table-cell text-xs">{u.email}</td>
+                                        <td className="px-6 py-4">
+                                            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${roleBadgeColor[u.role] || 'bg-gray-100 text-gray-700'}`}>
+                                                {roleLabel[u.role] || u.role}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="pt-4 mt-2 border-t border-gray-100 text-center">
+                        <Link href={route('admin.users.index')} className="text-primary text-xs font-bold hover:underline inline-flex items-center gap-1">
+                            Lihat Semua Pengguna <i className="fa-solid fa-arrow-right"></i>
                         </Link>
                     </div>
                 </div>

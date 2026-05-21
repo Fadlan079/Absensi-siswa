@@ -4,23 +4,92 @@ export default function GuestLayout({ children }) {
     return (
         <div className="min-h-screen flex text-text bg-bg font-sans antialiased">
             {/* Left Side - Branding */}
-            <div className="hidden lg:flex lg:w-1/2 relative bg-primary items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-secondary opacity-90"></div>
+            <div className="hidden lg:flex lg:w-1/2 relative bg-primary items-center justify-center overflow-hidden p-16">
+                {/* Background glow and modern grid pattern */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--color-primary-light),var(--color-primary))]"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:24px_24px]"></div>
                 
-                {/* Decorative circles */}
-                <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
+                {/* Decorative neon blobs */}
+                <div className="absolute top-1/4 -left-20 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]"></div>
+                <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary-light/30 rounded-full blur-[100px]"></div>
                 
-                <div className="relative z-10 text-center px-12 text-white">
-                    <Link href="/" className="inline-block mb-8">
-                        <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center p-2 mx-auto shadow-2xl transform transition hover:scale-105">
-                            <img src="/logo.png" alt="Portal Presensi" className="w-full h-full object-contain" />
+                <div className="relative z-10 w-full max-w-lg flex flex-col items-start text-left text-white">
+                    {/* Brand header */}
+                    <div className="flex items-center gap-4 mb-8">
+                        <Link href="/" className="group">
+                            <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center p-2.5 shadow-xl border border-white/20 transform transition duration-300 group-hover:scale-105 group-hover:bg-white/20">
+                                <img src="/logo.png" alt="Portal Presensi" className="w-full h-full object-contain filter drop-shadow-sm" />
+                            </div>
+                        </Link>
+                        <div>
+                            <span className="text-secondary font-extrabold text-[10px] uppercase tracking-widest">Sistem Presensi</span>
+                            <h1 className="text-xl font-black tracking-tight text-white mt-0.5">Portal Presensi</h1>
                         </div>
-                    </Link>
-                    <h1 className="text-4xl font-extrabold mb-4 tracking-tight">Portal Presensi</h1>
-                    <p className="text-lg text-white/80 font-medium max-w-md mx-auto leading-relaxed">
-                        Sistem pencatatan kehadiran siswa digital yang cepat, aman, dan tanpa kertas.
+                    </div>
+                    
+                    <h2 className="text-4xl font-extrabold mb-5 tracking-tight leading-tight">
+                        Pencatatan Kehadiran <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-yellow-300">
+                            Modern & Efisien.
+                        </span>
+                    </h2>
+                    
+                    <p className="text-white/70 font-medium mb-10 leading-relaxed text-sm">
+                        Sistem pencatatan kehadiran siswa digital yang cepat, aman, dan terintegrasi secara real-time untuk mempermudah rekapitulasi data.
                     </p>
+
+                    {/* Premium Glassmorphic Stats Mockup */}
+                    <div className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl space-y-4">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div className="flex items-center gap-2.5">
+                                <div className="w-2 h-2 rounded-full bg-success animate-pulse"></div>
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">Aktivitas Hari Ini</span>
+                            </div>
+                            <span className="text-[10px] font-extrabold text-secondary bg-secondary/10 px-2.5 py-1 rounded-full border border-secondary/25">
+                                Real-time
+                            </span>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-white/5 border border-white/5 rounded-xl p-4 transition hover:bg-white/10 duration-200">
+                                <div className="text-[10px] text-white/50 font-semibold mb-1">Rata-rata Kehadiran</div>
+                                <div className="text-2xl font-black text-white flex items-baseline gap-1">
+                                    98.4%
+                                    <span className="text-[10px] text-success font-bold"><i className="fa-solid fa-arrow-up"></i> 1.2%</span>
+                                </div>
+                            </div>
+                            
+                            <div className="bg-white/5 border border-white/5 rounded-xl p-4 transition hover:bg-white/10 duration-200">
+                                <div className="text-[10px] text-white/50 font-semibold mb-1">Kelas Aktif</div>
+                                <div className="text-2xl font-black text-white">
+                                    12 Kelas
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Recent Presensi Mockup Line */}
+                        <div className="space-y-2.5 pt-2">
+                            <div className="flex items-center justify-between p-3 bg-white/5 border border-white/5 rounded-lg text-xs font-medium">
+                                <div className="flex items-center gap-2.5">
+                                    <div className="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center text-[10px] font-bold">AW</div>
+                                    <span className="text-white/80 font-bold text-[11px]">Aditya Wijaya</span>
+                                </div>
+                                <span className="text-success font-semibold bg-success/15 px-2 py-0.5 rounded text-[9px] border border-success/20">
+                                    Hadir Tepat Waktu
+                                </span>
+                            </div>
+                            
+                            <div className="flex items-center justify-between p-3 bg-white/5 border border-white/5 rounded-lg text-xs font-medium">
+                                <div className="flex items-center gap-2.5">
+                                    <div className="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center text-[10px] font-bold">IP</div>
+                                    <span className="text-white/80 font-bold text-[11px]">Indah Permatasari</span>
+                                </div>
+                                <span className="text-warning font-semibold bg-warning/15 px-2 py-0.5 rounded text-[9px] border border-warning/20">
+                                    Sakit (Surat Dokter)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

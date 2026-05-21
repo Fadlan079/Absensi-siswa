@@ -63,23 +63,23 @@ export default function CreateAttendance({ auth, kelas, jurusan, students, atten
                     </div>
                 </div>
 
-                <form onSubmit={submit} className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
+                <form onSubmit={submit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 overflow-hidden">
+                    <div className="overflow-x-auto -mx-6 -mt-6">
+                        <table className="w-full text-left border-collapse min-w-[600px]">
                             <thead>
-                                <tr className="bg-gray-50 border-b border-gray-200">
-                                    <th className="px-6 py-4 text-xs font-bold text-muted uppercase tracking-wider w-16">No</th>
-                                    <th className="px-6 py-4 text-xs font-bold text-muted uppercase tracking-wider">Nama Siswa</th>
-                                    <th className="px-4 py-4 text-xs font-bold text-muted uppercase tracking-wider text-center">Hadir</th>
-                                    <th className="px-4 py-4 text-xs font-bold text-muted uppercase tracking-wider text-center">Sakit</th>
-                                    <th className="px-4 py-4 text-xs font-bold text-muted uppercase tracking-wider text-center">Izin</th>
-                                    <th className="px-4 py-4 text-xs font-bold text-muted uppercase tracking-wider text-center">Alpha</th>
+                                <tr className="bg-slate-50/70 border-b border-gray-100">
+                                    <th className="px-6 py-4.5 text-xs font-bold text-gray-500 uppercase tracking-wider w-16 text-center">No</th>
+                                    <th className="px-6 py-4.5 text-xs font-bold text-gray-500 uppercase tracking-wider">Nama Siswa</th>
+                                    <th className="px-4 py-4.5 text-xs font-bold text-success uppercase tracking-wider text-center">Hadir</th>
+                                    <th className="px-4 py-4.5 text-xs font-bold text-blue-600 uppercase tracking-wider text-center">Sakit</th>
+                                    <th className="px-4 py-4.5 text-xs font-bold text-warning uppercase tracking-wider text-center">Izin</th>
+                                    <th className="px-4 py-4.5 text-xs font-bold text-danger uppercase tracking-wider text-center">Alpha</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100">
+                            <tbody className="divide-y divide-gray-50">
                                 {students.map((s, index) => (
-                                    <tr key={s.id} className="hover:bg-bg/50 transition-colors group">
-                                        <td className="px-6 py-4 text-sm font-bold text-muted">{index + 1}</td>
+                                    <tr key={s.id} className="hover:bg-slate-50/50 transition-colors group">
+                                        <td className="px-6 py-4 text-sm font-bold text-gray-400 text-center">{index + 1}</td>
                                         <td className="px-6 py-4">
                                             <span className="text-sm font-bold text-text group-hover:text-primary transition-colors">{s.nama}</span>
                                         </td>
@@ -126,8 +126,8 @@ export default function CreateAttendance({ auth, kelas, jurusan, students, atten
                             </tbody>
                         </table>
                     </div>
-
-                    <div className="bg-gray-50 px-6 py-4 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+ 
+                    <div className="bg-slate-50 -mx-6 -mb-6 px-6 py-4.5 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 mt-6">
                         <div className="text-xs font-semibold text-muted italic">
                             Pastikan data sudah diperiksa sebelum menekan tombol simpan.
                         </div>

@@ -53,24 +53,28 @@ export default function PresensiShow({ auth, kelas, presensi, detail, summary })
 
             {/* Daftar Siswa */}
             <section className="px-5 pb-6">
-                <div className="flex items-center gap-2 mb-3 border-l-4 border-secondary pl-3">
-                    <h2 className="font-bold text-base">Daftar Kehadiran ({total} siswa)</h2>
-                </div>
-                <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                    <div className="divide-y divide-gray-50">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 className="text-lg font-bold text-text">Daftar Kehadiran</h3>
+                            <p className="text-xs text-muted font-bold uppercase tracking-wider mt-0.5">Akumulasi kehadiran dari total {total} siswa</p>
+                        </div>
+                    </div>
+                    
+                    <div className="divide-y divide-gray-50 -mx-6 -mb-6">
                         {detail.map((d, i) => {
                             const cfg = statusConfig[d.status] || statusConfig.alpha;
                             return (
-                                <div key={i} className="flex items-center gap-3 px-4 py-3">
-                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${d.jk === 'L' ? 'bg-blue-100 text-blue-600' : 'bg-pink-100 text-pink-600'}`}>
+                                <div key={i} className="flex items-center gap-4 px-6 py-4.5 hover:bg-slate-50/50 transition-colors first:pt-0 last:pb-6">
+                                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 ${d.jk === 'L' ? 'bg-blue-50 text-blue-600 border border-blue-100' : 'bg-pink-50 text-pink-600 border border-pink-100'}`}>
                                         {(d.nama || '?').substring(0, 1)}
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-semibold text-text truncate">{d.nama}</p>
-                                        <p className="text-xs text-gray-400">{d.nis}</p>
-                                        {d.catatan && <p className="text-xs text-gray-400 italic">"{d.catatan}"</p>}
+                                        <p className="text-sm font-bold text-text truncate">{d.nama}</p>
+                                        <p className="text-xs text-gray-400 font-semibold font-mono mt-0.5">{d.nis}</p>
+                                        {d.catatan && <p className="text-xs text-gray-400 italic mt-0.5">"{d.catatan}"</p>}
                                     </div>
-                                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${cfg.bg}`}>
+                                    <span className={`text-xs font-extrabold px-2.5 py-1 rounded-full ${cfg.bg}`}>
                                         {cfg.label}
                                     </span>
                                 </div>

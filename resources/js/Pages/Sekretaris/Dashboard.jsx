@@ -36,23 +36,41 @@ export default function SekretarisDashboard({ auth, kelas, sudah_absen, recent_p
             </section>
 
             <section className="px-5 pb-5">
-                <div className="flex items-center gap-2 mb-3 border-l-4 border-secondary pl-3">
-                    <h2 className="font-bold text-base">Riwayat Presensi Terbaru</h2>
-                </div>
-                <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                    {recent_presensi.length > 0 ? (
-                        <div className="divide-y divide-gray-50">
-                            {recent_presensi.map((p, i) => (
-                                <Link key={i} href={route('sekretaris.presensi.show', p.id)}
-                                    className="flex items-center justify-between px-4 py-3 hover:bg-gray-50/50 transition">
-                                    <span className="text-sm font-medium text-text">{p.tanggal}</span>
-                                    <i className="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
-                                </Link>
-                            ))}
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 className="text-lg font-bold text-text">Riwayat Presensi Terbaru</h3>
+                            <p className="text-xs text-muted font-bold uppercase tracking-wider mt-0.5">Daftar pengisian presensi kelas Anda</p>
                         </div>
-                    ) : (
-                        <p className="text-center text-gray-400 text-sm py-10">Belum ada riwayat presensi</p>
-                    )}
+                    </div>
+                    
+                    <div className="border border-gray-50 rounded-xl overflow-hidden shadow-sm">
+                        {recent_presensi.length > 0 ? (
+                            <div className="divide-y divide-gray-50">
+                                {recent_presensi.map((p, i) => (
+                                    <Link key={i} href={route('sekretaris.presensi.show', p.id)}
+                                        className="flex items-center justify-between px-6 py-4 hover:bg-slate-50/50 transition-colors">
+                                        <span className="text-sm font-bold text-text">{p.tanggal}</span>
+                                        <div className="flex items-center gap-2 text-primary font-bold text-xs">
+                                            Lihat Detail <i className="fa-solid fa-chevron-right text-xs"></i>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-center text-gray-400 font-medium py-12">Belum ada riwayat presensi</p>
+                        )}
+                    </div>
+
+                    {/* Bottom Status / Badges directly from illustration */}
+                    <div className="flex flex-wrap items-center justify-between gap-4 mt-6 pt-6 border-t border-gray-100">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-success text-xs font-bold rounded-lg border border-green-100">
+                            <i className="fa-solid fa-shield-halved"></i> Data Terenkripsi & Aman
+                        </div>
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-success text-xs font-bold rounded-lg border border-green-100">
+                            <i className="fa-solid fa-leaf"></i> 100% Bebas Kertas
+                        </div>
+                    </div>
                 </div>
             </section>
         </DashboardLayout>

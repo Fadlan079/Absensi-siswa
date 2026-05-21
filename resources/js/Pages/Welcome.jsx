@@ -86,7 +86,7 @@ export default function Welcome({ auth }) {
                                         <div className="flex items-center justify-between p-3 bg-bg rounded border border-gray-100">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-7 h-7 rounded bg-primary text-white flex items-center justify-center font-bold text-xs">1</div>
-                                                <span className="font-semibold text-text text-sm">Achmad Fattah Safaraz</span>
+                                                <span className="font-semibold text-text text-sm">Aditya Wijaya</span>
                                             </div>
                                             <div className="flex gap-1.5">
                                                 <div className="w-7 h-7 rounded bg-success text-white flex items-center justify-center shadow-sm text-xs"><i className="fa-solid fa-check"></i></div>
@@ -99,7 +99,7 @@ export default function Welcome({ auth }) {
                                         <div className="flex items-center justify-between p-3 bg-yellow-50 rounded border border-yellow-100">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-7 h-7 rounded bg-primary text-white flex items-center justify-center font-bold text-xs">2</div>
-                                                <span className="font-semibold text-text text-sm">Nathan Andik A Dilma</span>
+                                                <span className="font-semibold text-text text-sm">Indah Permatasari</span>
                                             </div>
                                             <div className="flex gap-1.5">
                                                 <div className="w-7 h-7 rounded bg-white text-muted flex items-center justify-center border border-gray-200 text-xs"><i className="fa-solid fa-check"></i></div>
@@ -112,7 +112,7 @@ export default function Welcome({ auth }) {
                                         <div className="flex items-center justify-between p-3 bg-bg rounded border border-gray-100">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-7 h-7 rounded bg-primary text-white flex items-center justify-center font-bold text-xs">3</div>
-                                                <span className="font-semibold text-text text-sm">Farrel Azam Kahupati</span>
+                                                <span className="font-semibold text-text text-sm">Rizky Ramadhan</span>
                                             </div>
                                             <div className="flex gap-1.5">
                                                 <div className="w-7 h-7 rounded bg-success text-white flex items-center justify-center shadow-sm text-xs"><i className="fa-solid fa-check"></i></div>
