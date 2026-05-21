@@ -23,15 +23,20 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title="Masuk - Portal Presensi" />
+
+            <div className="mb-8 text-center lg:text-left">
+                <h2 className="text-2xl font-bold text-text mb-2">Selamat Datang</h2>
+                <p className="text-muted text-sm">Masuk ke akun Anda untuk melanjutkan.</p>
+            </div>
 
             {status && (
-                <div className="mb-4 text-sm font-medium text-green-600">
+                <div className="mb-6 text-sm font-medium text-green-700 bg-green-50 p-4 rounded-xl border border-green-200">
                     {status}
                 </div>
             )}
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="space-y-5">
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -49,7 +54,7 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div>
                     <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
@@ -65,8 +70,8 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mt-4 block">
-                    <label className="flex items-center">
+                <div className="block">
+                    <label className="flex items-center cursor-pointer group">
                         <Checkbox
                             name="remember"
                             checked={data.remember}
@@ -74,24 +79,24 @@ export default function Login({ status, canResetPassword }) {
                                 setData('remember', e.target.checked)
                             }
                         />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
+                        <span className="ms-2 text-sm text-muted group-hover:text-text transition-colors">
+                            Ingat saya
                         </span>
                     </label>
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-4">
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="text-sm text-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md text-center sm:text-left"
                         >
-                            Forgot your password?
+                            Lupa password?
                         </Link>
                     )}
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
+                    <PrimaryButton className="w-full sm:w-auto" disabled={processing}>
+                        Masuk
                     </PrimaryButton>
                 </div>
             </form>

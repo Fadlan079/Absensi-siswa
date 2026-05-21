@@ -8,14 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleMiddleware
 {
-    public function handle(Request $request, Closure $next, string $role)
+    /**
+     * Handle an incoming request.
+     * Mendukung multiple role: middleware('role:admin,kepala_sekolah')
+     */
+    public function handle(Request $request, Closure $next, string ...$roles): mixed
     {
         if (!Auth::check()) {
-            return redirect('/login');
+            return redirect()->route('login');
         }
 
-        if (Auth::user()->role !== $role) {
-            abort(403);
+        $userRole = Auth::user()->role;
+
+        if (!in_array($userRole, $roles)) {
+            abort(403, 'Anda tidak memiliki akses ke halaman ini.');
         }
 
         return $next($request);

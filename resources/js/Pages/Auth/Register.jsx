@@ -23,11 +23,16 @@ export default function Register() {
 
     return (
         <GuestLayout>
-            <Head title="Register" />
+            <Head title="Daftar Akun - Portal Presensi" />
 
-            <form onSubmit={submit}>
+            <div className="mb-8 text-center lg:text-left">
+                <h2 className="text-2xl font-bold text-text mb-2">Buat Akun Baru</h2>
+                <p className="text-muted text-sm">Lengkapi data di bawah ini untuk mendaftar.</p>
+            </div>
+
+            <form onSubmit={submit} className="space-y-5">
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Nama Lengkap" />
 
                     <TextInput
                         id="name"
@@ -43,7 +48,7 @@ export default function Register() {
                     <InputError message={errors.name} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div>
                     <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
@@ -60,7 +65,7 @@ export default function Register() {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div>
                     <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
@@ -77,10 +82,10 @@ export default function Register() {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div>
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value="Konfirmasi Password"
                     />
 
                     <TextInput
@@ -102,16 +107,16 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-4">
                     <Link
                         href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="text-sm text-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md text-center sm:text-left"
                     >
-                        Already registered?
+                        Sudah punya akun?
                     </Link>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Register
+                    <PrimaryButton className="w-full sm:w-auto" disabled={processing}>
+                        Daftar
                     </PrimaryButton>
                 </div>
             </form>

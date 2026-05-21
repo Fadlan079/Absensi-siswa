@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Portal Presensi - SMKTI Airlangga')
+@section('title', 'Portal Presensi')
 
 @section('content')
 <nav class="border-b border-secondary bg-white sticky top-0 z-50 shadow-sm">
@@ -8,10 +8,10 @@
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 flex items-center justify-center rounded text-secondary text-xl font-bold">
-                    <img src="logo.png" alt="SMKTI AIRLANGGA SAMARINDA">
+                    <img src="logo.png" alt="Portal Presensi">
                 </div>
                 <div>
-                    <h1 class="text-primary font-bold text-lg leading-tight uppercase tracking-wide">SMKTI Airlangga</h1>
+                    <h1 class="text-primary font-bold text-lg leading-tight uppercase tracking-wide">Portal Presensi</h1>
                     <p class="text-muted text-xs font-medium uppercase tracking-widest">Sistem Presensi</p>
                 </div>
             </div>
@@ -165,7 +165,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
         <div class="flex items-center gap-3 text-primary font-bold tracking-wide">
             <img src="logo.png" alt="" class="w-10 h-10">
-            SMKTI <span class="text-secondary">AIRLANGGA</span> SAMARINDA
+            PORTAL <span class="text-secondary">PRESENSI</span>
         </div>
         <div class="text-gray-500">
             &copy; {{ date('Y') }} Hak Cipta Dilindungi.

@@ -23,9 +23,14 @@ export default function ResetPassword({ token, email }) {
 
     return (
         <GuestLayout>
-            <Head title="Reset Password" />
+            <Head title="Reset Password - Portal Presensi" />
 
-            <form onSubmit={submit}>
+            <div className="mb-8 text-center lg:text-left">
+                <h2 className="text-2xl font-bold text-text mb-2">Buat Password Baru</h2>
+                <p className="text-muted text-sm">Silakan buat password baru yang kuat untuk akun Anda.</p>
+            </div>
+
+            <form onSubmit={submit} className="space-y-5">
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -42,8 +47,8 @@ export default function ResetPassword({ token, email }) {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                <div>
+                    <InputLabel htmlFor="password" value="Password Baru" />
 
                     <TextInput
                         id="password"
@@ -59,10 +64,10 @@ export default function ResetPassword({ token, email }) {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div>
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value="Konfirmasi Password Baru"
                     />
 
                     <TextInput
@@ -83,9 +88,9 @@ export default function ResetPassword({ token, email }) {
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Reset Password
+                <div className="pt-2">
+                    <PrimaryButton className="w-full" disabled={processing}>
+                        Simpan Password
                     </PrimaryButton>
                 </div>
             </form>
