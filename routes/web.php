@@ -80,6 +80,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/notifikasi', [\App\Http\Controllers\NotifikasiController::class, 'index'])->name('notifikasi.index');
     Route::post('/notifikasi/{id}/read', [\App\Http\Controllers\NotifikasiController::class, 'markAsRead'])->name('notifikasi.read');
     Route::post('/notifikasi/read-all', [\App\Http\Controllers\NotifikasiController::class, 'markAllAsRead'])->name('notifikasi.readAll');
+
+    // Endpoint untuk mengambil daftar siswa berdasarkan kelas (untuk Guru Mapel)
+    Route::get('/api/siswa-by-kelas/{kelas_id}', function (int $kelas_id) {
+        return \App\Models\Student::where('kelas_id', $kelas_id)
+            ->orderBy('nama')
+            ->get(['id', 'nis', 'nama', 'jenis_kelamin']);
+    });
 });
 
 require __DIR__.'/auth.php';

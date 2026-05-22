@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\student;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,7 +36,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(student $student)
+    public function show(Student $student)
     {
         $siswa = Student::select('kelas', 'jurusan', 'nama', 'nisn','id')->get()->groupBy(['kelas', 'jurusan']);
         return inertia('Admin/Student/DaftarSiswa', ['siswa' => $siswa]);
@@ -45,7 +45,7 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(student $student)
+    public function edit(Student $student)
     {
         return inertia('Admin/Student/Edit', ['student' => $student]);
     }
@@ -53,7 +53,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, student $student)
+    public function update(Request $request, Student $student)
     {
         $request->validate([
             'nisn' => 'required',
@@ -76,7 +76,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(student $student)
+    public function destroy(Student $student)
     {
         $student->delete();
 
