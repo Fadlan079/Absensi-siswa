@@ -1,5 +1,5 @@
 import DashboardLayout from '@/Layouts/DashboardLayout';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 
 const statusConfig = {
     hadir: { label: 'Hadir', bg: 'bg-green-100 text-green-700' },
@@ -59,6 +59,15 @@ export default function PresensiShow({ auth, kelas, presensi, detail, summary })
                             <h3 className="text-lg font-bold text-text">Daftar Kehadiran</h3>
                             <p className="text-xs text-muted font-bold uppercase tracking-wider mt-0.5">Akumulasi kehadiran dari total {total} siswa</p>
                         </div>
+                        {presensi.is_today && (
+                            <Link
+                                href={route('sekretaris.presensi.edit', presensi.id)}
+                                className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold px-4 py-2 rounded-xl transition shadow-sm"
+                            >
+                                <i className="fa-solid fa-pen-to-square"></i>
+                                Edit Presensi
+                            </Link>
+                        )}
                     </div>
                     
                     <div className="divide-y divide-gray-50 -mx-6 -mb-6">
