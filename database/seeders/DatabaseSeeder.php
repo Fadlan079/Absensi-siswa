@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MapelSeeder::class,
             StudentSeeder::class,
+            PresensiSeeder::class,
         ]);
         
-        $this->command->info('✅ Seluruh seeder (User, Kelas, Mapel, Student) berhasil dijalankan!');
+        $this->command->info('✅ Seluruh seeder (User, Kelas, Mapel, Student, Presensi) berhasil dijalankan!');
     }
 }

@@ -63,10 +63,20 @@ class DashboardController extends Controller
             })
             ->values();
 
+        // Rekap presensi sekolah bulan ini (Donut Chart)
+        $presensiBulanIniIds = PresensiHarian::where('tanggal', '>=', $bulanIni)->pluck('id');
+        $rekapSekolah = [
+            'hadir' => PresensiHarianDetail::whereIn('presensi_id', $presensiBulanIniIds)->where('status', 'hadir')->count(),
+            'sakit' => PresensiHarianDetail::whereIn('presensi_id', $presensiBulanIniIds)->where('status', 'sakit')->count(),
+            'izin'  => PresensiHarianDetail::whereIn('presensi_id', $presensiBulanIniIds)->where('status', 'izin')->count(),
+            'alpha' => PresensiHarianDetail::whereIn('presensi_id', $presensiBulanIniIds)->where('status', 'alpha')->count(),
+        ];
+
         return Inertia::render('KepalaSekolah/Dashboard', [
             'statistik_kelas'   => $statistikKelas,
             'kelas_belum_absen' => $kelasBelumAbsen,
             'grafik_harian'     => $grafikHarian,
+            'rekap_sekolah'     => $rekapSekolah,
             'tanggal'           => $today->isoFormat('dddd, D MMMM Y'),
         ]);
     }
